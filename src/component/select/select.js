@@ -2,6 +2,21 @@ import React from 'react';
 import './select.css';
 
 export default class Select extends React.Component {
+    constructor (props) {
+        super(props);
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(event) {
+        let data = {
+            name: event.target.name,
+            value: event.target.value
+        }
+        
+        if(this.props && this.props.onChangeHandler) {
+            this.props.onChangeHandler(data);
+        }
+    }
     render () {
         const optionArray = [
             {
@@ -27,7 +42,7 @@ export default class Select extends React.Component {
         })
         return (
             <div className={this.props.classname}>
-                <select>
+                <select name ={this.props.name} onChange={this.handleOnChange}>
                     {options}
                 </select>
             </div>

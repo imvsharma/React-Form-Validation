@@ -6,11 +6,76 @@ import Button from './../../component/Button/button';
 
 
 export default class CompanyRegistration extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            "companyname":"",
+            "companywebsite": "",
+            "suffix": "",
+            "firstname": "",
+            "lastname": "",
+            "email": "",
+            "password": "",
+            "confirmpassword": ""
+        };
+        this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleOnChange (data) {
+        console.log('event.target.value', data);
+        switch(data.name) {
+            case "companyname" :
+            this.setStateFunc({"companyname": data.value});
+            break;
+
+            case "companywebsite" :
+            this.setStateFunc({"companywebsite": data.value});
+            break;
+
+            case "suffix" :
+            this.setStateFunc({"suffix": data.value});
+            break;
+
+            case "firstname" :
+            this.setStateFunc({"firstname": data.value});
+            break;
+
+            case "lastname" :
+            this.setStateFunc({"lastname": data.value});
+            break;
+
+            case "email" :
+            this.setStateFunc({"email": data.value});
+            break;
+
+            case "password" :
+            this.setStateFunc({"password": data.value});
+            break;
+
+            case "confirmpassword" :
+            this.setStateFunc({"confirmpassword": data.value});
+            break;
+        }
+        
+    }
+
+    setStateFunc = (data) => {
+        this.setState(data);
+    }
+
+    handleSubmit = (event) => {
+        
+        console.log(this.state);
+        event.preventDefault();
+    }
+
     render () {
         const inputArray = [
             {
                 key: 1,
                 type:"input",
+                name: "companyname",
                 typename: "text",
                 classname: "input-container",
                 placeholdervalue: "Enter your company name"
@@ -18,6 +83,7 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 2,
                 type:"input",
+                name: "companywebsite",
                 typename: "url",
                 classname: "input-container",
                 placeholdervalue: "Enter your company website"
@@ -25,11 +91,13 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 3,
                 type: "select",
+                name: "suffix",
                 classname: "input-container"
             },
             {
                 key: 4,
                 type:"input",
+                name: "firstname",
                 typename: "text",
                 classname: "input-container",
                 placeholdervalue: "Enter your firstname"
@@ -37,6 +105,7 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 5,
                 type:"input",
+                name: "lastname",
                 typename: "text",
                 classname: "input-container",
                 placeholdervalue: "Enter your lastname"
@@ -44,6 +113,7 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 6,
                 type:"input",
+                name: "email",
                 typename: "email",
                 classname: "input-container",
                 placeholdervalue: "Enter your email id"
@@ -51,6 +121,7 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 7,
                 type:"input",
+                name: "password",
                 typename: "password",
                 classname: "input-container",
                 placeholdervalue: "Enter your password"
@@ -58,6 +129,7 @@ export default class CompanyRegistration extends React.Component {
             {
                 key: 8,
                 type:"input",
+                name: "confirmpassword",
                 typename: "password",
                 classname: "input-container",
                 placeholdervalue: "Enter your confirm password"
@@ -67,48 +139,26 @@ export default class CompanyRegistration extends React.Component {
                 type: "button",
                 typename: "submit",
                 classname: "button-container",
-                buttonName: "Submit"
+                buttonName: "Submit",
+                event: "this.handleSubmit"
             }
 
         ];
 
         const FormElementElements = inputArray.map(FormElement => {
             if(FormElement.key === 3) {
-                return (<Select key={FormElement.key} classname= {FormElement.classname} />)
+                return (<Select key={FormElement.key} name={FormElement.name} classname= {FormElement.classname} onChangeHandler={this.handleOnChange} />)
             } else if(FormElement.key === 9) {
                 return (<Button key={FormElement.key} typename={FormElement.typename} buttonName={FormElement.buttonName}  classname= {FormElement.classname} />)
             } else {
-                return (<Input key={FormElement.key} typename={FormElement.typename} classname= {FormElement.classname} placeholdervalue={FormElement.placeholdervalue} />)
+                return (<Input key={FormElement.key} name={FormElement.name} typename={FormElement.typename} classname= {FormElement.classname} placeholdervalue={FormElement.placeholdervalue} onChangeHandler={this.handleOnChange} />)
             }
         })
         return (
             <div>
                 <div className="form-heading">General Information</div>
-                <form className="form-container">
+                <form className="form-container" onSubmit={this.handleSubmit}>
                     {FormElementElements}
-                    
-                
-                    {/* 
-                    
-                    <div className="input-container">
-                        <input type="text" placeholder="Enter your firstname" />
-                    </div>
-                    <div className="input-container">
-                        <input type="text" placeholder="Enter your lastname" />
-                    </div>
-                    <div className="input-container">
-                        <input type="text" placeholder="Enter your email" />
-                    </div>
-                    <div className="input-container">
-                        <input type="text" placeholder="Enter your password" />
-                    </div>
-                    <div className="input-container">
-                        <input type="text" placeholder="Enter your confirm password" />
-                    </div>
-
-                    <div className="button-container">
-                        <button type="submit">Submit</button>
-                    </div> */}
                 </form>
             </div>
             
