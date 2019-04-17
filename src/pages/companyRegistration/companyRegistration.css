@@ -12,23 +12,9 @@
     margin-right: auto;
 }
 
-.input-container{
-    display: inline-block;
-    width: 100%;
-    border: 1px solid #e8e8e8;
-    padding: 8px 20px;
-    border-radius: 3px;
-    margin: 10px 0;
-}
 
-.input-container input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-}
+
+
 
 .input-container select {
     border: none;
@@ -49,12 +35,7 @@
     font-size: 16px;
 }
 
-.input-container input::placeholder {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: gray;
-}
+
 
 .button-container{
     display: inline-block;
