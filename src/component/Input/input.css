@@ -7,7 +7,25 @@
     margin: 10px 0;
 }
 
+.error-input-container {
+    border: 1px solid red !important;
+    display: inline-block;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
 .input-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.error-input-container  input {
     border: none;
     outline: none;
     width: 100%;
@@ -21,4 +39,21 @@
     font-weight: 500;
     font-size: 14px;
     color: gray;
+}
+
+
+.error-input-container input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: gray;
+}
+
+.error-message {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: red;
+    margin-left: 10px;
+    margin-top: -7px;
 }
