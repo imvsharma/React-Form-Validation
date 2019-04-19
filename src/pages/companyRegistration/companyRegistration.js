@@ -104,7 +104,9 @@ export default class CompanyRegistration extends React.Component {
                 name: "firstname",
                 typename: "text",
                 classname: "input-container",
-                placeholdervalue: "Enter your firstname"
+                placeholdervalue: "Enter your firstname",
+                required: true,
+                isValid: true
             },
             {
                 key: 5,
@@ -112,7 +114,9 @@ export default class CompanyRegistration extends React.Component {
                 name: "lastname",
                 typename: "text",
                 classname: "input-container",
-                placeholdervalue: "Enter your lastname"
+                placeholdervalue: "Enter your lastname",
+                required: true,
+                isValid: true
             },
             {
                 key: 6,
@@ -120,7 +124,9 @@ export default class CompanyRegistration extends React.Component {
                 name: "email",
                 typename: "email",
                 classname: "input-container",
-                placeholdervalue: "Enter your email id"
+                placeholdervalue: "Enter your email id",
+                required: true,
+                isValid: true
             },
             {
                 key: 7,
@@ -128,18 +134,15 @@ export default class CompanyRegistration extends React.Component {
                 name: "password",
                 typename: "password",
                 classname: "input-container",
-                placeholdervalue: "Enter your password"
+                placeholdervalue: "Enter your password",
+                required: true,
+                minlength: 4,
+                maxlength: 8,
+                isValid: true
             },
+            
             {
                 key: 8,
-                type:"input",
-                name: "confirmpassword",
-                typename: "password",
-                classname: "input-container",
-                placeholdervalue: "Enter your confirm password"
-            },
-            {
-                key: 9,
                 type: "button",
                 typename: "submit",
                 classname: "button-container",
@@ -152,11 +155,30 @@ export default class CompanyRegistration extends React.Component {
 
         const FormElementElements = inputArray.map(FormElement => {
             if(FormElement.key === 3) {
-                return (<Select key={FormElement.key} name={FormElement.name} classname= {FormElement.classname} onChangeHandler={this.handleOnChange} />)
-            } else if(FormElement.key === 9) {
-                return (<Button key={FormElement.key} typename={FormElement.typename} buttonName={FormElement.buttonName}  classname= {FormElement.classname} valid={FormElement.isValid} />)
+                return (<Select 
+                            key={FormElement.key} 
+                            name={FormElement.name} 
+                            classname= {FormElement.classname} 
+                            onChangeHandler={this.handleOnChange} />)
+            } else if(FormElement.key === 8) {
+                return (<Button 
+                            key={FormElement.key} 
+                            typename={FormElement.typename} 
+                            buttonName={FormElement.buttonName}  
+                            classname= {FormElement.classname}
+                            valid={FormElement.isValid} />)
             } else {
-                return (<Input key={FormElement.key} name={FormElement.name} typename={FormElement.typename} classname= {FormElement.classname} placeholdervalue={FormElement.placeholdervalue} onChangeHandler={this.handleOnChange} required={FormElement.required} minlength={FormElement.minlength} url={FormElement.url} />)
+                return (<Input 
+                            key={FormElement.key}
+                            name={FormElement.name}
+                            typename={FormElement.typename}
+                            classname= {FormElement.classname}
+                            placeholdervalue={FormElement.placeholdervalue} 
+                            onChangeHandler={this.handleOnChange} 
+                            required={FormElement.required} 
+                            minlength={FormElement.minlength}
+                            maxlength={FormElement.maxlength}
+                            url={FormElement.url} />)
             }
         })
         return (
